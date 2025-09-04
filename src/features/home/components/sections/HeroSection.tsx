@@ -19,7 +19,7 @@ export const HeroSection: React.FC = () => {
       {/* Content */}
       <div className="flex flex-col items-start w-full relative z-10 px-4 sm:px-14 pt-8">
           {/* Subtitle */}
-          <h6 className="w-full text-sm max-sm:text-sm max-md:text-sm max-lg:text-md text-primary-500 font-thin mb-4 tracking-widest leading-relaxed max-md:w-full md:max-w-[65%]">
+          <h6 className="w-full text-sm max-sm:text-sm max-md:text-sm max-lg:text-md text-primary-500 font-thin mb-4 tracking-widest text-main leading-relaxed max-md:w-full md:max-w-[65%]">
             {commentTitle}
           </h6>
 
