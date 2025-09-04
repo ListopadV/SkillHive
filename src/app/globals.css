@@ -17,6 +17,7 @@
   /* Базовые цвета */
   --color-base-dark: #0D0C0D;
   --color-base-light: #FFFFFF;
+  --color-base-light-dark: #040307;
   
   /* Серые оттенки */
   --color-grey-1: rgba(255, 255, 255, 0.98);

@@ -1,35 +1,36 @@
 'use client';
 
 import Sand from "@/assets/Sand.png";
-import { ArrowLeft, ArrowRight, FlowerLotus, Money, PresentationChart, Strategy } from "phosphor-react";
+import {ArrowLeftIcon, ArrowRightIcon, FlowerLotusIcon, MoneyIcon, PresentationChartIcon, StrategyIcon} from '@phosphor-icons/react/dist/ssr';
+// import { ArrowLeft, ArrowRight, FlowerLotus, Money, PresentationChart, Strategy } from "phosphor-react";
 
 export const AboutSection = () => {
   const commentTitle = "//\u00A0\u00A0ABOUT US";
   
   const cards = [
     {
-      icon: Strategy,
+      icon: StrategyIcon,
       title: "DRIVE BUSINESS GROWTH",
       subtitle: "STRATEGISTS",
       description: "Experts who shape campaigns, identify opportunities, and drive brand growth.",
       professions: ["MANAGER", "PLANNER", "STRATEGIST"]
     },
     {
-      icon: FlowerLotus,
+      icon: FlowerLotusIcon,
       title: "ENGAGE YOUR AUDIENCE",
       subtitle: "CONTENT CREATORS",
       description: "Creators who craft engaging content and grow brand presence online.",
       professions: ["WRITER", "BLOGGER", "CREATOR"]
     },
     {
-      icon: Money,
+      icon: MoneyIcon,
       title: "MAXIMIZER CAMPAIGN ROI",
       subtitle: "BUYERS",
       description: "Professionals optimizing paid campaigns to maximize ROI and reach.",
       professions: ["PPC", "CEM", "CPM"]
     },
     {
-      icon: PresentationChart,
+      icon: PresentationChartIcon,
       title: "MAKE YOUR BRAND SHINE",
       subtitle: "ANALYSTS & DESIGNERS",
       description: "From analyzing metrics to designing impactful visuals.",
@@ -41,7 +42,7 @@ export const AboutSection = () => {
     <section 
       className="relative w-full my-40 max-md:my-20"
     >
-      <div className="px-14">
+      <div className="px-4 sm:px-14">
         {/* Comment Title */}
       <div className="mx-auto mb-4">
         <h6 className="text-sm max-sm:text-sm max-md:text-sm max-lg:text-md text-main font-thin tracking-widest leading-relaxed">
@@ -144,7 +145,7 @@ export const AboutSection = () => {
               }}
               className="w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors"
             >
-              <ArrowLeft className="w-16 h-4" />
+              <ArrowLeftIcon className="w-16 h-4" />
             </button>
             <button 
               onClick={() => {
@@ -155,7 +156,7 @@ export const AboutSection = () => {
               }}
               className="w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors"
             >
-              <ArrowRight className="w-16 h-4" />
+              <ArrowRightIcon className="w-16 h-4" />
             </button>
           </div>
         </div>

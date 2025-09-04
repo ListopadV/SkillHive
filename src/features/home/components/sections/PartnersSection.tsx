@@ -11,7 +11,7 @@ const partners = [Google, Microsoft, Amazon, Dribble, Hubspot, Upwork]
 export const PartnersSection = () => {
 
     return (
-        <section className="relative w-full overflow-hidden py-8 ">
+        <section className="relative w-full overflow-hidden py-8">
             {/* затемнение слева */}
             <div className="pointer-events-none absolute left-0 top-0 h-full w-60 bg-gradient-to-r from-black to-transparent z-10" />
             {/* затемнение справа */}
