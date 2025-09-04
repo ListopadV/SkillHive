@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  /* Цвета акцентные / основные */
+  --color-main: #C9C5FD;
+  --color-main-5: rgba(201, 197, 253, 0.05);
+  --color-main-10: rgba(201, 197, 253, 0.1);
+  --color-main-30: rgba(201, 197, 253, 0.3);
+  --color-main-50: rgba(201, 197, 253, 0.5);
+  --color-main-70: rgba(201, 197, 253, 0.7);
+  
+  /* Базовые цвета */
+  --color-base-dark: #0D0C0D;
+  --color-base-light: #FFFFFF;
+  
+  /* Серые оттенки */
+  --color-grey-1: rgba(255, 255, 255, 0.98);
+  --color-grey-2: rgba(255, 255, 255, 0.94);
+  --color-grey-3: rgba(255, 255, 255, 0.90);
+  --color-grey-4: rgba(255, 255, 255, 0.80);
+  --color-grey-5: rgba(255, 255, 255, 0.70);
+  --color-grey-6: rgba(255, 255, 255, 0.40);
+  --color-grey-7: rgba(255, 255, 255, 0.30);
+  --color-grey-8: rgba(255, 255, 255, 0.20);
+  --color-grey-9: rgba(255, 255, 255, 0.10);
+  --color-grey-10: rgba(255, 255, 255, 0.044);
+  
+  /* Дополнительные цвета */
+  
+  /* Шрифты */
+  --font-main: "Inter Tight", sans-serif;
+  
+  /* Тема */
+  --color-background: var(--color-base-light);
+  --color-foreground: var(--color-base-dark);
+  --font-sans: var(--font-main);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-bg-responsive {
+    background-position: center bottom;
+    background-size: 250%;
+    height: 80vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bg-responsive {
+    background-size: 220%;
+    background-position: 60% bottom;
+    height: 120vh;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-bg-responsive {
+    background-size: 180%;
+    height: 120vh;
+  }
+}
+
+@media (min-width: 1024px) {
+  .animate-scroll > div {
+    width: calc(100% / 6);
+  }
+}
+
+@media (max-width: 1440px) {
+  .hero-bg-responsive {
+    background-size: 160%;
+    height: 130vh;
+  }
+}
+
+/* Glassmorphism utility class */
+.glassmorphism {
+  background:  black;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Hide scrollbar completely */
+#cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+#cards-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hero-bg-responsive {
+  background-size: 155%;
+  background-position: 60% center;
+  background-repeat: no-repeat;
+  margin-bottom: 100px;
+}
+
+.animate-scroll {
+  animation: scroll 15s linear infinite;
+  width: 200vw;
+}
