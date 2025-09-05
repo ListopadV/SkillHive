@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useDropdown } from '../shared/contexts/DropdownContext';
 import { Button } from '../shared/ui/atoms/Button';
+import { navigationItems } from './navigation';
 
 export const Header: React.FC = () => {
   const { isDropdownOpen, setIsDropdownOpen } = useDropdown();
@@ -13,13 +14,6 @@ export const Header: React.FC = () => {
   const toggleMobileMenu = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-
-  const navigationItems = [
-    { name: 'Home', href: '/home' },
-    { name: 'About', href: '/about' },
-    { name: 'Pricing', href: '/pricing' },
-    { name: 'Contact', href: '/contact' },
-  ];
 
   return (
     <header className="bg-transparent-50 backdrop-blur-sm border-b border-gray-200/10 sticky top-0 z-50">
@@ -94,14 +88,14 @@ export const Header: React.FC = () => {
                 ))}
 
                 <div className="flex flex-col gap-2 py-4">
-                  <Button variant="primary" size="md" className="w-full">
+                  <Button variant="primary" size="lg" className="w-full">
                     Hire Us
                   </Button>
                 </div>
               </div>
               </div>
               <div className="px-5 py-2">
-                <Button variant="secondary" size="md" className="w-full">
+                <Button variant="secondary" size="lg" className="w-full">
                   Explore
                 </Button>
             </div>

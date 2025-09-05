@@ -1,7 +1,8 @@
-import pricingBg from '@/assets/PricingBackground.png';
-import { PriceCardContent } from '../../types/types';
+'use client'
 
+import { SectionHeader } from "@/shared/ui/molecules/SectionHeader";
 import { StackIcon, StackSimpleIcon } from '@phosphor-icons/react/dist/ssr';
+import { PriceCardContent } from '../../types/types';
 import { PriceCard } from '../PricingSection/PriceCard';
 
 const priceCards: PriceCardContent[] = [
@@ -48,34 +49,22 @@ export const PricingSection = () => {
     const commentTitle = "//\u00A0\u00A0PRICING";
 
     return (
-        <section className="w-full pt-30 max-sm:bg-transparent" style={{
-            backgroundImage: `url(${pricingBg.src})`,
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: '100%'
-        }}>
+        <section className="w-full py-30 max-sm:bg-transparent">
             <div className="px-14">
-                <div className="flex flex-row max-md:flex-col w-full justify-between items-center">
-                    
-                    <div className="flex-1 max-sm:w-full">
-                        <h6 className="mb-5 text-sm max-sm:text-sm max-md:text-sm max-lg:text-md text-main font-thin tracking-widest leading-relaxed">
-                            {commentTitle}
-                        </h6>
-
-                        <h2 className="text-3xl max-sm:text-2xl max-md:text-3xl max-lg:text-3xl font-thin tracking-wider leading-tight">
-                            DISCOVER WHAT CLIENTS SAY ABOUT SKILLHIVE
-                        </h2>
-                    </div>
-
-                    <div className="flex-1 max-sm:w-full">
-                        <p className="text-base max-sm:text-sm max-md:text-base max-lg:text-lg text-grey-5 font-light leading-relaxed tracking-wide">
-                            Discover how SkillHive connects businesses with top marketing professionals quickly, efficiently, and reliably.
-                        </p>
-                    </div>
-                </div>
+                <SectionHeader 
+                    mainDirection="row"
+                    headerDirection="column"
+                    descriptionDirection="column"
+                    commentTitle={commentTitle}
+                    title="DISCOVER WHAT CLIENTS SAY ABOUT SKILLHIVE"
+                    description={[
+                        'Discover how SkillHive connects businesses with top marketing professionals quickly, efficiently, and reliably.'
+                    ]}
+                />
 
 
-                <div className="mt-30 flex flex-wrap w-full justify-center items-end gap-6 mt-16">
+                <div 
+                className="pt-20 pb-50 flex flex-wrap w-full justify-center items-end gap-6 mt-16 price-section">
                     {priceCards.map((item, index) => (
                         <PriceCard 
                             key={index} 

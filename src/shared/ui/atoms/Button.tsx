@@ -1,4 +1,4 @@
-import ArrowUpRightIcon from '@heroicons/react/24/outline/ArrowUpRightIcon';
+import {ArrowUpRightIcon} from '@phosphor-icons/react/dist/ssr';
 import React from 'react';
 
 interface ButtonProps {

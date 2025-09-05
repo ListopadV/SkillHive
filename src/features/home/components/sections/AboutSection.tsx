@@ -1,80 +1,60 @@
 'use client';
 
 import Sand from "@/assets/Sand.png";
-import {ArrowLeftIcon, ArrowRightIcon, FlowerLotusIcon, MoneyIcon, PresentationChartIcon, StrategyIcon} from '@phosphor-icons/react/dist/ssr';
-// import { ArrowLeft, ArrowRight, FlowerLotus, Money, PresentationChart, Strategy } from "phosphor-react";
+import { SectionHeader } from "@/shared/ui/molecules/SectionHeader";
+import { CardsContainer } from "@/shared/ui/organisms/CardsContainer";
+import { FlowerLotusIcon, MoneyIcon, PresentationChartIcon, StrategyIcon } from '@phosphor-icons/react/dist/ssr';
+
+const cards = [
+  {
+    icon: StrategyIcon,
+    title: "DRIVE BUSINESS GROWTH",
+    subtitle: "STRATEGISTS",
+    description: "Experts who shape campaigns, identify opportunities, and drive brand growth.",
+    professions: ["MANAGER", "PLANNER", "STRATEGIST"]
+  },
+  {
+    icon: FlowerLotusIcon,
+    title: "ENGAGE YOUR AUDIENCE",
+    subtitle: "CONTENT CREATORS",
+    description: "Creators who craft engaging content and grow brand presence online.",
+    professions: ["WRITER", "BLOGGER", "CREATOR"]
+  },
+  {
+    icon: MoneyIcon,
+    title: "MAXIMIZER CAMPAIGN ROI",
+    subtitle: "BUYERS",
+    description: "Professionals optimizing paid campaigns to maximize ROI and reach.",
+    professions: ["PPC", "CEM", "CPM"]
+  },
+  {
+    icon: PresentationChartIcon,
+    title: "MAKE YOUR BRAND SHINE",
+    subtitle: "ANALYSTS & DESIGNERS",
+    description: "From analyzing metrics to designing impactful visuals.",
+    professions: ["3D", "UX/UI", "GRAPHIC"]
+  }
+];
+
 
 export const AboutSection = () => {
   const commentTitle = "//\u00A0\u00A0ABOUT US";
-  
-  const cards = [
-    {
-      icon: StrategyIcon,
-      title: "DRIVE BUSINESS GROWTH",
-      subtitle: "STRATEGISTS",
-      description: "Experts who shape campaigns, identify opportunities, and drive brand growth.",
-      professions: ["MANAGER", "PLANNER", "STRATEGIST"]
-    },
-    {
-      icon: FlowerLotusIcon,
-      title: "ENGAGE YOUR AUDIENCE",
-      subtitle: "CONTENT CREATORS",
-      description: "Creators who craft engaging content and grow brand presence online.",
-      professions: ["WRITER", "BLOGGER", "CREATOR"]
-    },
-    {
-      icon: MoneyIcon,
-      title: "MAXIMIZER CAMPAIGN ROI",
-      subtitle: "BUYERS",
-      description: "Professionals optimizing paid campaigns to maximize ROI and reach.",
-      professions: ["PPC", "CEM", "CPM"]
-    },
-    {
-      icon: PresentationChartIcon,
-      title: "MAKE YOUR BRAND SHINE",
-      subtitle: "ANALYSTS & DESIGNERS",
-      description: "From analyzing metrics to designing impactful visuals.",
-      professions: ["3D", "UX/UI", "GRAPHIC"]
-    }
-  ];
-
   return (
     <section 
       className="relative w-full my-40 max-md:my-20"
     >
       <div className="px-4 sm:px-14">
-        {/* Comment Title */}
-      <div className="mx-auto mb-4">
-        <h6 className="text-sm max-sm:text-sm max-md:text-sm max-lg:text-md text-main font-thin tracking-widest leading-relaxed">
-          {commentTitle}
-        </h6>
-      </div>
-
-      {/* Main Content */}
-      <div className="mx-auto mb-14">
-        <div className="flex max-md:flex-col gap-12 max-md:gap-4">
-          {/* Left Side */}
-          <div className="flex-1">
-            <h2 className="text-5xl max-sm:text-3xl max-md:text-4xl max-lg:text-5xl font-thin tracking-wider leading-tight max-w-[90%]">
-              Connecting Businesses with the Marketing Talent
-            </h2>
-          </div>
-
-          {/* Right Side */}
-          <div className="flex-1 flex max-md:flex-col gap-8 max-md:gap-2">
-            <div className="flex-1">
-              <p className="text-lg max-sm:text-base max-md:text-lg max-lg:text-xl text-grey-5 font-light leading-relaxed tracking-wide">
-                Our mission is to simplify recruitment while ensuring every placement fuels business growth and strengthens brand impact.
-              </p>
-            </div>
-            <div className="flex-1">
-                <p className="text-lg max-sm:text-base max-md:text-lg max-lg:text-xl text-grey-5 font-light leading-relaxed tracking-wide">
-                  Our curated network of marketing experts is ready to step in and deliver results tailored to your company&apos;s unique needs.
-                </p>
-            </div>
-          </div>
-        </div>
-      </div>
+        <SectionHeader 
+        mainDirection="row"
+        headerDirection="column"
+        descriptionDirection="column"
+        commentTitle={commentTitle}
+        title="Connecting Businesses with the Marketing Talent"
+        description={[
+          'Our mission is to simplify recruitment while ensuring every placement fuels business growth and strengthens brand impact.',
+          'Our curated network of marketing experts is ready to step in and deliver results tailored to your company\'s unique needs.'
+        ]}
+      />
       </div>
 
       {/* Cards Section */}
@@ -86,8 +66,8 @@ export const AboutSection = () => {
                 backgroundRepeat: 'no-repeat'
               }}>
         <div className="relative">
-          <div className="flex flex-row overflow-x-hidden gap-10" id="cards-container" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-            {cards.map((card, index) => (
+          <CardsContainer 
+            cards={cards.map((card, index) => (
               <div key={index} className=" glassmorphism rounded-lg flex-1 w-[314px] max-sm:flex-shrink-0 h-[440px] flex flex-col">
                 {/* Card Header */}
                 <div className="flex justify-between items-center justify-between h-16 px-6 pt-6 gap-24">
@@ -131,34 +111,11 @@ export const AboutSection = () => {
                 </div>
               </div>
             </div>
-          ))}
-          </div>
-          
-          {/* Кастомные стрелки для скролла */}
-          <div className="flex gap-4 justify-end mt-4 lg:hidden">
-            <button 
-              onClick={() => {
-                const container = document.getElementById('cards-container');
-                if (container) {
-                  container.scrollBy({ left: -324, behavior: 'smooth' });
-                }
-              }}
-              className="w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors"
-            >
-              <ArrowLeftIcon className="w-16 h-4" />
-            </button>
-            <button 
-              onClick={() => {
-                const container = document.getElementById('cards-container');
-                if (container) {
-                  container.scrollBy({ left: 324, behavior: 'smooth' });
-                }
-              }}
-              className="w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors"
-            >
-              <ArrowRightIcon className="w-16 h-4" />
-            </button>
-          </div>
+            ))}
+            containerClassName="gap-10"
+            arrowsBreakpoint="sm"
+            scrollStep={324}
+          />
         </div>
       </div>
     </section>
