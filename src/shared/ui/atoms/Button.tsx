@@ -1,4 +1,4 @@
-import {ArrowUpRightIcon} from '@phosphor-icons/react/dist/ssr';
+import { ArrowUpRightIcon } from '@phosphor-icons/react/dist/ssr';
 import React from 'react';
 
 interface ButtonProps {
@@ -31,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
     lg: 'px-12 py-3 text-lg',
   };
 
-  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
+  const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`.trim();
 
   return (
     <button

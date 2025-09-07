@@ -1,14 +1,18 @@
-import { Main} from "@/layout/Main"
-import { Footer } from "@/layout/Footer"
-import {Header} from "@/layout/Header"
-import HeroSection from "../components/sections/HeroSection"
-import { PartnersSection } from "../components/sections/PartnersSection"
-import {AboutSection} from "../components/sections/AboutSection"
-import { PricingSection } from "../components/sections/PricingSection"
-import { TeamSection } from "@/shared/ui/sections/TeamSection"
-import { TestimonialsSection } from "@/shared/ui/sections/TestimonialsSection"
-import { ContactUsSection } from "@/shared/ui/sections/ContactUsSection"
-import { FAQSection } from "@/shared/ui/sections/FAQSection"
+'use client'
+
+
+import { Footer } from "@/layout/Footer";
+import { Header } from "@/layout/Header";
+import { Main } from "@/layout/Main";
+import { ContactUsSection } from "@/shared/ui/sections/ContactUsSection";
+import { FAQSection } from "@/shared/ui/sections/FAQSection";
+import { TeamSection } from "@/shared/ui/sections/TeamSection";
+import { TestimonialsSection } from "@/shared/ui/sections/TestimonialsSection";
+import { AboutSection } from "../components/sections/AboutSection";
+import HeroSection from "../components/sections/HeroSection";
+import { HowWeWorkSection } from "../components/sections/HowWeWorkSection";
+import { PartnersSection } from "../components/sections/PartnersSection";
+import { PricingSection } from "../components/sections/PricingSection";
 
 export const HomePage = () => {
 
@@ -19,7 +23,7 @@ export const HomePage = () => {
                 <PartnersSection />
                 <AboutSection />
 
-                {/* <HowWeWorkSection /> */}
+                <HowWeWorkSection />
                 <PricingSection />
                 <TeamSection />
                 <TestimonialsSection />

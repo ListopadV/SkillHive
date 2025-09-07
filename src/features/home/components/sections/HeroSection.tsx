@@ -1,34 +1,38 @@
 'use client';
-
-import heroBg from '@/assets/hero-bg.png';
+import React from 'react';
 import { useDropdown } from '@/shared/contexts/DropdownContext';
 import { Button } from '@/shared/ui/atoms/Button';
 import { SectionHeader } from '@/shared/ui/molecules/SectionHeader';
-import React from 'react';
+import { Section } from '@/layout/Section';
+import { Container } from '@/layout/Container';
+import heroBg from '@/assets/hero-bg.png';
 
 export const HeroSection: React.FC = () => {
   const { isDropdownOpen } = useDropdown();
   const commentTitle = "//\u00A0\u00A0YOUR PARTNER IN MARKETING RECRUITMENT";
   
   return (
-    <section 
-        className="relative min-h-screen w-full hero-bg-responsive z-10"
+    <Section  
+        className="py-20 min-h-screen hero-bg-responsive z-10 sm:pb-[600px]"
       style={{
         backgroundImage: `url(${heroBg.src})`,
       }}
     >
       {/* Content */}
-      <div className="flex flex-col items-start w-full relative z-10 px-4 sm:px-14 pt-8">
+      <Container className="flex flex-col items-start z-10">
           <SectionHeader 
             mainDirection="column"
             headerDirection="column"
             descriptionDirection="column"
             commentTitle={commentTitle}
             title="WHERE COMPANIES MEET MARKETING TALENT"
+            titleSize="heading1"
             description={[
               'SkillHive bridges the gap between growing business and the professionals who drive brand success.'
             ]}
-            className="mb-8"
+            descriptionClassName="sm:max-w-[55%]"
+            className="mb-8 lg:max-w-[60%]"
+            descriptionSize='body1'
           />
 
           {/* Buttons */}
@@ -42,8 +46,8 @@ export const HeroSection: React.FC = () => {
               </Button>
             </div>
           )}
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 

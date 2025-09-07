@@ -1,7 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import logo from "@/assets/logo.png";
+import Text from "@/shared/ui/atoms/Text";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 import { Container } from "./Container";
 import { navigationItems } from "./navigation";
 
@@ -20,9 +21,9 @@ export const Footer: React.FC = () => {
                         height={48}
                         className="w-12 h-12"
                     />
-                    <span className="text-main text-xl font-thin">
+                    <Text type="span" size="body1" color="main" className="font-thin">
                         SkillHive
-                    </span>
+                    </Text>
                 </Link>
                     <nav className="flex items-center space-x-8 self-center">
                         {navigationItems.map((item) => (
@@ -30,7 +31,9 @@ export const Footer: React.FC = () => {
                             key={item.name}
                             href={item.href}
                         >
-                            {item.name}
+                            <Text type="span" size="body2" color="grey">
+                                {item.name}
+                            </Text>
                         </Link>
                         ))}
                     </nav>
@@ -39,10 +42,14 @@ export const Footer: React.FC = () => {
                 <div className="w-full h-[1px] my-10 bg-grey-7" />
 
                 <div className="flex flew-row max-sm:flex-col items-center max-sm:items-start justify-between gap-5">
-                    <p className="text-grey-6">
+                    <Text type="p" size="caption" color="grey">
                         © 2025 SkillHive. All rights reserved.
-                    </p>
-                    <Link href="/home" className="text-grey-6">Terms & Conditions</Link>
+                    </Text>
+                    <Link href="/home">
+                        <Text type="span" size="caption" color="grey">
+                            Terms & Conditions
+                        </Text>
+                    </Link>
                 </div>
             </Container>
         </footer>

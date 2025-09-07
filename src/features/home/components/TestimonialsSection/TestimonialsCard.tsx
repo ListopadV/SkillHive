@@ -1,3 +1,4 @@
+import Text from "@/shared/ui/atoms/Text";
 import Image from "next/image";
 
 interface TestimonialsCardProps {
@@ -28,12 +29,12 @@ export const TestimonialsCard: React.FC<TestimonialsCardProps> = ({ avatar, desc
                     height={128}
                     className="w-12 h-12 bg-gray-300 rounded-full flex-shrink-0" 
                 />
-                {description && <p className="text-grey-5 text-lg max-w-[90%]">&ldquo;{description}&rdquo;</p>}
+                {description && <Text type="p" size="body1" color="grey" className="max-w-[90%]">&ldquo;{description}&rdquo;</Text>}
             </div>
 
             <div className="flex flex-col justify-between items-start gap-2">
-                <h3 className="text-base-light text-xl font-thin">{name}</h3>
-                <p className="text-grey-5 text-sm">{position}</p>
+                <Text type="h3" size="heading3" color="light">{name}</Text>
+                <Text type="p" size="body2" color="grey">{position}</Text>
             </div>  
 
         </div>

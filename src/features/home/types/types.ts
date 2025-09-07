@@ -9,3 +9,9 @@ export interface PriceCardContent {
     options: string[];
     className?: string
 }
+
+export interface StepContent {
+    Icon: React.ComponentType<React.ComponentProps<Icon>>;
+    title: string;
+    description: string;
+}

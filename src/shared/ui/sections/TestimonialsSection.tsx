@@ -1,12 +1,15 @@
+'use client'
+
 import Daniel from "@/assets/Daniel.png"
-import DanielBackground from "@/assets/DanielBackground.png"
+import DanielBackground from "@/assets/DanielFull.png"
 import Emily from "@/assets/Emily.png"
 import Michael from "@/assets/Michael.png"
 import Nguyen from "@/assets/Nguyen.png"
-import testimonialsBackground from "@/assets/testimonialsBackground.png"
+import testimonialsBackground from "@/assets/testimonials-bg.png"
 import { TestimonialsCard } from "@/features/home/components/TestimonialsSection/TestimonialsCard"
 import { Container } from "@/layout/Container"
 import { Section } from "@/layout/Section"
+import { useBreakpoint } from "@/shared/hooks/useBreakpoint"
 import { SectionHeader } from "../molecules/SectionHeader"
 import { CardsContainer } from "../organisms/CardsContainer"
 
@@ -45,11 +48,20 @@ const testimonials = [
   ]
 
 export const TestimonialsSection = () => {
-
+    const { isMobile, isTablet, isDesktop } = useBreakpoint()
     const commentTitle = "//\u00A0\u00A0TESTIMONIALS"
 
+    const getArrowsPosition = () => {
+        if (isMobile) return "top-right"
+        if (isTablet) return "bottom-right" 
+        if (isDesktop) return "bottom-right"
+        return "bottom-right" // fallback
+    }
+
     return (
-        <Section style={{
+        <Section
+        className="py-30"
+        style={{
           backgroundImage: `url(${testimonialsBackground.src})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -66,10 +78,12 @@ export const TestimonialsSection = () => {
                     description={[
                         'Discover how SkillHive connects businesses with top marketing professionals quickly, efficiently, and reliably.'
                     ]}
+                    descriptionClassName="sm:max-w-[32%]"
+                    titleClassName="sm:max-w-[75%]"
                 />
             </Container>
 
-            <div className="relative pl-4 sm:pl-14">
+            <div className="relative pl-4 sm:pl-14 py-24">
                 <CardsContainer 
                     cards={testimonials.map((item, index) => (
                         <TestimonialsCard key={index} 
@@ -81,9 +95,10 @@ export const TestimonialsSection = () => {
                         />
                     ))}
                     containerClassName="gap-6"
-                    arrowsBreakpoint="sm"
+                    arrowsBreakpoint="always"
                     arrowContainerClassName="pr-4 sm:pr-14"
-                    arrowsPosition="top"
+                    arrowsPosition={getArrowsPosition()}
+                    isShown={true}
                     scrollStep={314}
                 />
             </div>

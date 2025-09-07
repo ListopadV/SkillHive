@@ -2,6 +2,7 @@
 
 import { CaretDown } from '@phosphor-icons/react';
 import React, { useEffect, useRef, useState } from 'react';
+import Text from '../atoms/Text';
 
 interface AccordionItem {
     id: string;
@@ -62,14 +63,14 @@ export const Accordion: React.FC<AccordionProps> = ({
                     >
                         <button
                             onClick={() => toggleItem(item.id)}
-                            className="w-full px-6 py-4 flex text-start items-center justify-start hover:bg-main-10 transition-colors duration-200"
+                            className="w-full px-6 py-4 flex text-start items-center justify-start hover:bg-main-5 transition-colors duration-200"
                         >
                             <div className={`transition-transform duration-300 ease-in-out ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
                                 <CaretDown className="w-5 h-5 text-base-light flex-shrink-0" />
                             </div>
-                            <span className="pl-4 text-base-light text-lg font-medium tracking-wide">
+                            <Text type="span" size="heading3" color="light" className="pl-4">
                                 {item.question}
-                            </span>
+                            </Text>
                             
                         </button>
                         
@@ -82,11 +83,11 @@ export const Accordion: React.FC<AccordionProps> = ({
                         >
                             <div 
                                 ref={(el) => { contentRefs.current[item.id] = el; }}
-                                className="px-6 py-3 pb-4"
+                                className="px-6 py-3 pb-4 sm:pb-4 pb-6"
                             >
-                                <p className="text-grey-5 text-base leading-relaxed">
+                                <Text type="p" size="body2" color="grey" className="break-words">
                                     {item.answer}
-                                </p>
+                                </Text>
                             </div>
                         </div>
                     </div>

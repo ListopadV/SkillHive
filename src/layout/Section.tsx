@@ -1,9 +1,9 @@
 
 
-export const Section = ({ children, style }: { children: React.ReactNode, style?: React.CSSProperties }) => {
+export const Section = ({ children, style, className }: { children: React.ReactNode, style?: React.CSSProperties, className?: string }) => {
 
     return (
-        <section className="relative my-15 max-md:my-10 w-full h-min-screen" style={style}>
+        <section className={`bg-base-dark relative w-full h-min-screen ${className}`} style={style}>
             {children}
         </section>  
     )

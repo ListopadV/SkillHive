@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react';
 import Button from "@/shared/ui/atoms/Button";
-import { PriceCardContent } from '../../types/types';
 import { Checkbox } from '@/shared/ui/atoms/Checkbox';
+import Text from '@/shared/ui/atoms/Text';
+import React from 'react';
+import { PriceCardContent } from '../../types/types';
 
 interface PriceCardProps extends PriceCardContent {
     className?: string;
@@ -13,30 +14,30 @@ interface PriceCardProps extends PriceCardContent {
 export const PriceCard: React.FC<PriceCardProps> = ({ Icon, title, description, price, options, className, isHighlighted = false }) => {
 
     return (
-        <div className={`flex flex-col justify-between items-start px-6 py-8  w-full gap-7 rounded-lg 
+        <div className={`w-full flex flex-col justify-between items-start px-6 py-8  w-full gap-7 rounded-lg 
             ${isHighlighted ? 'bg-gradient-to-b from-base-light-dark via-main-5 via-170% to-base-light-dark' : 'bg-main-5'}
             ${className}`}>
             <div className="bg-main-10 p-1.5 rounded-sm">
-                <Icon size={24} color="main" />
+                <Icon size={24} className="text-main" />
             </div>
 
             <div>
-                <h3 className="text-base-white text-xl font-thin">{title}</h3>
-                <p className="text-grey-5 text-sm mt-2">{description}</p>
+                <Text type="h3" size="heading3" color="light">{title}</Text>
+                <Text type="p" size="body2" color="grey" className="mt-2">{description}</Text>
             </div>
 
-            <div className="text-grey-5 text-lg">
+            <div>
                 {typeof price == 'number' ? 
-                    <div className="flex flex-row items-end gap-1">
-                        <span className="text-base-light text-3xl font-thin tracking-wider">${price} </span>
-                        <p className="text-base-white text-sm font-thin tracking-wider"> / placement</p>
+                    <div className="flex flex-row items-end  gap-1">
+                        <Text type="span" size="heading2" color="light" className="tracking-wider">${price} </Text>
+                        <Text type="p" size="body2" color="grey" className="tracking-wider"> / placement</Text>
                     </div> : 
-                    <span className="text-base-white text-2xl font-thin tracking-wider">{price}</span>
+                    <Text type="span" size="heading2" color="light" className="tracking-wider">{price}</Text>
                 }
             </div>
 
             <div className="flex flex-col gap-3">
-                <p className="text-base-light text-lg">Included:</p>
+                <Text type="p" size="body1-medium" color="light">Included:</Text>
                 <>
                     {options.map((option, index) => (
                         <div key={index} className="flex flex-row items-center gap-2">
@@ -45,7 +46,7 @@ export const PriceCard: React.FC<PriceCardProps> = ({ Icon, title, description, 
                                 size="md"
                                 round={true}
                             />
-                            <p className="text-grey-5 text-sm">{option}</p>
+                            <Text type="p" fontWeight="thin" size="body2" color="grey">{option}</Text>
                         </div>
                     ))}
                 </>

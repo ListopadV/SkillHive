@@ -10,6 +10,7 @@ import { Container } from "@/layout/Container";
 import { Section } from "@/layout/Section";
 import Image from "next/image";
 import { SectionHeader } from "../molecules/SectionHeader";
+import Text from "../atoms/Text";
 
 const members = [
     {
@@ -59,7 +60,7 @@ export const TeamSection = () => {
     const commentTitle = "//\u00A0\u00A0TEAM";
     return (
 
-        <Section>
+        <Section className="pb-30">
 
         <Container>
             <SectionHeader 
@@ -71,11 +72,13 @@ export const TeamSection = () => {
                 description={[
                     'Our diverse team of marketing and recruitment professionals is dedicated to connecting your business with top talent worldwide.'
                 ]}
+                descriptionClassName="sm:max-w-[32%]"
+                titleClassName="sm:max-w-[60%]"
             />
 
 
 
-                <div className="mt-18 max-md:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 w-full">
+                <div className="mt-18 max-md:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 w-full">
                     {members.map((member, index) => (
                         <div key={index} className="flex gap-3 w-full">
                                 <Image
@@ -86,8 +89,8 @@ export const TeamSection = () => {
                                     className="w-14 h-14 bg-gray-300 rounded-full flex-shrink-0"
                                 />
                             <div className="flex flex-col justify-between">
-                                <h3 className="text-xl font-medium text-base-light">{member.name}</h3>
-                                <p className="text-lg text-grey-5">{member.position}</p>
+                                <Text type="h3" size="body1-medium" color="light">{member.name}</Text>
+                                <Text type="p" size="body2" color="grey">{member.position}</Text>
                             </div>
                         </div>
                     ))}

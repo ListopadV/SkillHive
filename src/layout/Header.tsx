@@ -6,6 +6,8 @@ import Link from 'next/link';
 import React from 'react';
 import { useDropdown } from '../shared/contexts/DropdownContext';
 import { Button } from '../shared/ui/atoms/Button';
+import Text from '../shared/ui/atoms/Text';
+import { Dropdown } from "./Dropdown";
 import { navigationItems } from './navigation';
 
 export const Header: React.FC = () => {
@@ -28,9 +30,9 @@ export const Header: React.FC = () => {
               height={48}
               className="w-12 h-12"
             />
-            <span className="text-main text-xl hidden sm:block font-thin">
+            <Text type="span" size="body1" color="main" className="hidden sm:block font-thin">
               SkillHive
-            </span>
+            </Text>
           </Link>
 
           {/* Desktop Navigation */}
@@ -40,7 +42,9 @@ export const Header: React.FC = () => {
                 key={item.name}
                 href={item.href}
               >
-                {item.name}
+                <Text type="span" size="body2" color="grey">
+                  {item.name}
+                </Text>
               </Link>
             ))}
           </nav>
@@ -69,38 +73,11 @@ export const Header: React.FC = () => {
         </div>
 
         {/* Mobile Menu Dropdown */}
-  
+        <Dropdown 
+          isOpen={isDropdownOpen} 
+          onClose={() => setIsDropdownOpen(false)} 
+        />
       </div>
-
-             {isDropdownOpen && (
-          <div className="max-md:block md:hidden absolute top-full left-0 right-0 z-50">
-            <div className="border-t border-gray-200/10 border-b border-base-light glassmorphism">
-              <div className="px-5 py-2 space-y-4">
-                {navigationItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="block py-3 text-left text-4xl text-base-light hover:text-main transition-colors duration-200"
-                    onClick={() => setIsDropdownOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-
-                <div className="flex flex-col gap-2 py-4">
-                  <Button variant="primary" size="lg" className="w-full">
-                    Hire Us
-                  </Button>
-                </div>
-              </div>
-              </div>
-              <div className="px-5 py-2">
-                <Button variant="secondary" size="lg" className="w-full">
-                  Explore
-                </Button>
-            </div>
-          </div>
-        )}
     </header>
   );
 };

@@ -12,7 +12,8 @@ interface CardsContainerProps {
     showArrows?: boolean;
     arrowsBreakpoint?: 'sm' | 'md' | 'lg' | 'xl' | 'always' | 'never';
     scrollStep?: number;
-    arrowsPosition?: 'top' | 'bottom';
+    arrowsPosition?: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+    isShown?: boolean;
 }
 
 export const CardsContainer = ({ 
@@ -23,53 +24,69 @@ export const CardsContainer = ({
     showArrows = true,
     arrowsBreakpoint = 'lg',
     scrollStep = 314,
-    arrowsPosition = 'bottom'
+    arrowsPosition = 'bottom-right',
+    isShown = true
 }: CardsContainerProps) => {
 
     const containerId = useId();
 
     const getArrowsClassName = () => {
-        if (!showArrows) return 'hidden';
+        if (!showArrows || !isShown) return 'hidden';
         if (arrowsBreakpoint === 'always') return 'flex';
         if (arrowsBreakpoint === 'never') return 'hidden';
         return `${arrowsBreakpoint}:hidden flex`;
     };
 
     const getArrowsPosition = () => {
-        return arrowsPosition === 'top' ? 'mb-4' : 'mt-4';
+        const position = arrowsPosition || 'bottom-right';
+        const [vertical, horizontal] = position.split('-');
+        
+        const verticalClass = vertical === 'top' ? 'mb-4' : 'mt-4';
+        const horizontalClass = horizontal === 'left' ? 'justify-start' : 'justify-end';
+        
+        return `${verticalClass} ${horizontalClass}`;
+    };
+
+    const renderArrows = (position: 'top' | 'bottom') => {
+        const currentPosition = arrowsPosition || 'bottom-right';
+        const [vertical] = currentPosition.split('-');
+        
+        if (vertical !== position) return null;
+        
+        return (
+            <div className={`gap-4 ${getArrowsPosition()} ${getArrowsClassName()} ${arrowContainerClassName || ''}`}>
+                <button 
+                    onClick={() => {
+                        const container = document.getElementById(containerId);
+                        if (container) {
+                            container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                        }
+                    }}
+                    className={`w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 transition-colors ${arrowClassName || ''}`}
+                >
+                    <ArrowLeftIcon className="w-16 h-6" weight="bold" />
+                </button>
+                <button 
+                    onClick={() => {
+                        const container = document.getElementById(containerId);
+                        if (container) {
+                            container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                        }
+                    }}
+                    className={`w-12 h-12 flex items-center justify-center text-white hover:text-gray-300 transition-colors ${arrowClassName || ''}`}
+                >
+                    <ArrowRightIcon className="w-16 h-6" weight="bold" />
+                </button>
+            </div>
+        );
     };
 
     return (
         <>
-            {arrowsPosition === 'top' && (
-                <div className={`gap-4 justify-end ${getArrowsPosition()} ${getArrowsClassName()} ${arrowContainerClassName || ''}`}>
-                    <button 
-                        onClick={() => {
-                            const container = document.getElementById(containerId);
-                            if (container) {
-                                container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-                            }
-                        }}
-                        className={`w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors ${arrowClassName || ''}`}
-                    >
-                        <ArrowLeftIcon className="w-16 h-4" />
-                    </button>
-                    <button 
-                        onClick={() => {
-                            const container = document.getElementById(containerId);
-                            if (container) {
-                                container.scrollBy({ left: scrollStep, behavior: 'smooth' });
-                            }
-                        }}
-                        className={`w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors ${arrowClassName || ''}`}
-                    >
-                        <ArrowRightIcon className="w-16 h-4" />
-                    </button>
-                </div>
-            )}
+            {renderArrows('top')}
 
             <div 
-                className={`flex flex-row overflow-x-auto ${containerClassName || 'gap-6'}`}
+                className={`flex flex-row justify-between overflow-x-auto ${containerClassName || 'gap-6'}`}
                 id={containerId}
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
@@ -80,32 +97,7 @@ export const CardsContainer = ({
                 ))}
             </div>
 
-            {arrowsPosition === 'bottom' && (
-                <div className={`gap-4 justify-end ${getArrowsPosition()} ${getArrowsClassName()} ${arrowContainerClassName || ''}`}>
-                    <button 
-                        onClick={() => {
-                            const container = document.getElementById(containerId);
-                            if (container) {
-                                container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-                            }
-                        }}
-                        className={`w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors ${arrowClassName || ''}`}
-                    >
-                        <ArrowLeftIcon className="w-16 h-4" />
-                    </button>
-                    <button 
-                        onClick={() => {
-                            const container = document.getElementById(containerId);
-                            if (container) {
-                                container.scrollBy({ left: scrollStep, behavior: 'smooth' });
-                            }
-                        }}  
-                        className={`w-16 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors ${arrowClassName || ''}`}
-                    >
-                        <ArrowRightIcon className="w-16 h-4" />
-                    </button>
-                </div>
-            )}
+            {renderArrows('bottom')}
         </>
     )
 }

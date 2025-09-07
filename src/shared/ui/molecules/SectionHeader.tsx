@@ -1,16 +1,22 @@
-import React from 'react'; 
+import Text, { createTextProps, TextColor, TextSize, LineHeight, FontWeight } from '../atoms/Text';
 
 interface SectionHeader {
     commentTitle: string;
     title: string;
-    description: string[];
+    description: string[];  
     className?: string;
-    // Общее направление между заголовочной секцией и описанием
+    descriptionClassName?: string;
+    titleClassName?: string;
     mainDirection?: 'row' | 'column';
-    // Направление для описаний (когда их несколько)
     descriptionDirection?: 'row' | 'column';
-    // Направление для заголовочной секции (commentTitle + title)
     headerDirection?: 'row' | 'column';
+    titleSize?: TextSize;
+    titleColor?: TextColor;
+    titleLineHeight?: LineHeight;
+    descriptionSize?: TextSize;
+    descriptionColor?: TextColor;
+    descriptionLineHeight?: LineHeight;
+    descriptionFontWeight?: FontWeight;
 }
 
 export const SectionHeader = ({ 
@@ -18,10 +24,47 @@ export const SectionHeader = ({
     title, 
     description, 
     className, 
+    descriptionClassName,
     mainDirection = 'row',
     descriptionDirection = 'column',
-    headerDirection = 'column'
+    headerDirection = 'column',
+    titleSize = 'heading2',
+    titleColor = 'light',
+    titleLineHeight = 'high',
+    titleClassName,
+    descriptionSize = 'body2',
+    descriptionColor = 'grey',
+    descriptionLineHeight = 'normal',
+    descriptionFontWeight = 'light'
 }: SectionHeader) => {
+
+    // Конфигурации для разных типов текста
+    const commentTitleProps = createTextProps({
+        type: 'h6',
+        size: 'overline',
+        color: 'main',
+        lineHeight: 'normal',
+        fontWeight: 'thin',
+        className: 'font-thin tracking-widest'
+    });
+
+    const titleProps = createTextProps({
+        type: 'h2',
+        size: titleSize,
+        color: titleColor,
+        lineHeight: titleLineHeight,
+        fontWeight: 'thin',
+        className: 'font-thin tracking-wider'
+    });
+
+    const descriptionProps = createTextProps({
+        type: 'p',
+        size: descriptionSize,
+        color: descriptionColor,
+        lineHeight: descriptionLineHeight,
+        fontWeight: descriptionFontWeight,
+        className: 'tracking-wide'
+    });
 
     const getMainDirectionClasses = () => {
         if (mainDirection === 'column') {
@@ -46,21 +89,21 @@ export const SectionHeader = ({
 
     return (
 
-        <div className={`mb-25 w-full flex ${getMainDirectionClasses()} ${className}`}>
+        <div className={`flex ${getMainDirectionClasses()} ${className} w-full`}>
             <div className={`flex ${getHeaderDirectionClasses()}`}>
-                <h6 className="text-sm max-sm:text-sm max-md:text-sm max-lg:text-md text-main font-thin tracking-widest leading-relaxed">
+                <Text {...commentTitleProps}>
                     {commentTitle}
-                </h6>
-                <h2 className="text-3xl max-sm:text-xl max-md:text-2xl max-lg:text-3xl font-thin tracking-wider leading-tight">
+                </Text>
+                <Text {...titleProps} className={titleClassName}>
                     {title}
-                </h2>
+                </Text>
             </div>
 
-            <div className={`flex ${getDescriptionDirectionClasses()}`}>
+            <div className={`flex ${getDescriptionDirectionClasses()} ${descriptionClassName}`}>
                 {description.map((item, index) => (
-                    <p key={index} className="text-lg max-sm:text-base max-md:text-lg max-lg:text-xl text-grey-5 font-light leading-relaxed tracking-wide">
+                    <Text key={index} {...descriptionProps}>
                         {item}
-                    </p>
+                    </Text>
                 ))}
             </div>
         </div>
