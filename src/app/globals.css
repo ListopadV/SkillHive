@@ -127,7 +127,6 @@ body {
 }
 
 .price-section {
-  background-image: url('@/assets/pricing-bg.png');
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;

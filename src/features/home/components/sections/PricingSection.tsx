@@ -6,7 +6,7 @@ import { SectionHeader } from "@/shared/ui/molecules/SectionHeader";
 import { StackIcon, StackSimpleIcon } from '@phosphor-icons/react/dist/ssr';
 import { PriceCardContent } from '../../types/types';
 import { PriceCard } from '../PricingSection/PriceCard';
-
+import pricingBg from '@/assets/pricing-bg.png';
 
 const priceCards: PriceCardContent[] = [
     {
@@ -67,7 +67,11 @@ export const PricingSection = () => {
                     titleClassName="sm:max-w-[75%]"
                 />
 
-                <div className="pt-20 pb-50 flex flex-wrap w-full gap-6 mt-16 price-section">
+                <div 
+                style={{
+                    backgroundImage: `url(${pricingBg.src})`,
+                }}
+                className="pt-20 pb-50 flex flex-wrap w-full gap-6 mt-16 price-section">
                     {priceCards.map((item, index) => (
                         <PriceCard 
                             key={index} 
