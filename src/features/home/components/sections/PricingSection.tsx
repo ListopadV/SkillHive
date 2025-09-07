@@ -52,7 +52,7 @@ export const PricingSection = () => {
     const commentTitle = "//\u00A0\u00A0PRICING";
 
     return (
-        <Section className="max-sm:bg-transparent py-30">
+        <Section className="max-sm:bg-transparent py-30 max-sm:py-5">
             <Container>
                 <SectionHeader 
                     mainDirection="row"
@@ -71,7 +71,7 @@ export const PricingSection = () => {
                 style={{
                     backgroundImage: `url(${pricingBg.src})`,
                 }}
-                className="pt-20 pb-50 flex flex-wrap w-full gap-6 mt-16 price-section">
+                className="pt-20 pb-50 max-sm:pb-20 flex flex-wrap w-full gap-6 mt-16 max-sm:mt-4 max-sm:pt-10 price-section">
                     {priceCards.map((item, index) => (
                         <PriceCard 
                             key={index} 

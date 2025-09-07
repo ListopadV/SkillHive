@@ -44,10 +44,10 @@ export const HowWeWorkSection = () => {
     const commentTitle = "//\u00A0\u00A0HOW WE WORK";
 
     return (
-        <Section className="py-30">
+        <Section className="py-30 max-sm:py-5">
             <Container>
                 <div className="flex gap-8 min-h-screen max-sm:flex-col">
-                    <div className="w-1/2 sm:sticky top-25 h-fit">
+                    <div className="sm:sticky top-25 h-fit sm:w-[75%] w-full">
                         <SectionHeader 
                             mainDirection="column"
                             headerDirection="column"
@@ -57,7 +57,7 @@ export const HowWeWorkSection = () => {
                             description={[
                                 "We take the complexity out of marketing recruitment with a structured approach that saves time, reduces risk, and connects you only with the right-fit candidates."
                             ]}
-                            className="sm:w-[75%]"
+                            
                             descriptionClassName="sm:max-w-[81.25%]"
                         />
                     </div>

@@ -60,7 +60,7 @@ export const TestimonialsSection = () => {
 
     return (
         <Section
-        className="py-30"
+        className="py-30 max-sm:py-5"
         style={{
           backgroundImage: `url(${testimonialsBackground.src})`,
           backgroundSize: 'cover',

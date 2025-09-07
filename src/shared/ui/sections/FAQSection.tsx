@@ -39,7 +39,7 @@ const commentTitle = "//\u00A0\u00A0FAQ";
 export const FAQSection = () => {
 
     return (
-        <Section className="py-30">
+        <Section className="py-30 max-sm:py-5">
             <Container>
                 <div className="flex flex-col sm:flex-row max-sm:gap-4">
                     <div className="flex-1">

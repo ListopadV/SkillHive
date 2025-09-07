@@ -60,7 +60,7 @@ export const TeamSection = () => {
     const commentTitle = "//\u00A0\u00A0TEAM";
     return (
 
-        <Section className="pb-30">
+        <Section className="pb-30 max-sm:pb-5">
 
         <Container>
             <SectionHeader 

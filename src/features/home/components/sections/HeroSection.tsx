@@ -13,7 +13,7 @@ export const HeroSection: React.FC = () => {
   
   return (
     <Section  
-        className="py-20 min-h-screen hero-bg-responsive z-10 sm:pb-[600px]"
+        className="py-20 min-h-screen hero-bg-responsive z-10 sm:pb-[600px] max-sm:py-10"
       style={{
         backgroundImage: `url(${heroBg.src})`,
       }}

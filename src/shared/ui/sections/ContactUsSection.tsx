@@ -31,7 +31,7 @@ export const ContactUsSection = ({ isContactPage = false }: { isContactPage?: bo
 
     const commentTitle = "//\u00A0\u00A0CONTACT US";
     return (        
-        <Section className="py-30">
+        <Section className="py-30 max-sm:py-5">
             <Container className="flex flex-col sm:flex-row sm:gap-25 gap-4">
                 <div className="flex flex-col gap-4 flex-1">
                     <SectionHeader

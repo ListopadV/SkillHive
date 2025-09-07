@@ -43,7 +43,7 @@ const cards = [
 export const AboutSection = () => {
   const commentTitle = "//\u00A0\u00A0ABOUT US";
   return (
-    <Section className="py-30"
+    <Section className="py-30 max-sm:py-15"
     style={{
         backgroundImage: `url(${Sand.src})`,
         backgroundSize: 'contain',
